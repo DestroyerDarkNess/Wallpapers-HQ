@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="actionbar">#202126</color>
+	<color name="statusbar">#202126</color>
+	<color name="textColorPrimary">#ffffffff</color>
+	<color name="navigationBar">#202126</color>
+    <color name="colorAccent">#FF4081</color>
+	<color name="colorTint">#FFFFFF</color>
+</resources>

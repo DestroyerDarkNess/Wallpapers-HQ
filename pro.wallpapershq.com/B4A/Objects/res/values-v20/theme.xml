@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+ <style name="DarkTheme" parent="@android:style/Theme.Material.Light">
+		 <item name="android:colorPrimary">@color/actionbar</item>
+		 <item name="android:colorPrimaryDark">@color/statusbar</item>
+		 <item name="android:textColorPrimary">@color/textColorPrimary</item>
+		 <item name="android:navigationBarColor">@color/navigationBar</item>
+         <item name="android:colorAccent">@color/colorAccent</item>
+	   
+  <item name="android:textColorSecondary">#FF00FF</item> 
+  <item name="android:textColor">#FFFFFF</item>
+  <item name="android:textColorLink">#b71c1c</item>
+  <item name="android:textColorHighlight">#FF9F9F</item>
+  
+  </style>
+</resources>

@@ -1,0 +1,162 @@
+﻿Build1=Default,com.holydesing.software.wallpaperhq
+File1=About.png
+File10=Loading.png
+File11=MainPage.bal
+File12=maps_active.png
+File13=maps_inactive.png
+File14=output-onlinepngtools_(5)-Mvgz-MYQz-transformed (1).png
+File15=parking_active.png
+File16=parking_inactive.png
+File17=Saved.bal
+File18=Storage.bal
+File19=Viewer.bal
+File2=appicon.png
+File3=Folder.png
+File4=frm_item1.bal
+File5=Home.bal
+File6=home_active.png
+File7=home_inactive.png
+File8=Image.png
+File9=ImageViewer.bal
+FileGroup1=Default Group
+FileGroup10=Default Group
+FileGroup11=Default Group
+FileGroup12=Default Group
+FileGroup13=Default Group
+FileGroup14=Nuevo Grupo
+FileGroup15=Default Group
+FileGroup16=Default Group
+FileGroup17=Default Group
+FileGroup18=Default Group
+FileGroup19=Default Group
+FileGroup2=Default Group
+FileGroup3=Default Group
+FileGroup4=Default Group
+FileGroup5=Default Group
+FileGroup6=Default Group
+FileGroup7=Default Group
+FileGroup8=Default Group
+FileGroup9=Default Group
+Group=Default Group
+Library1=as_tabmenuadvanced
+Library10=reflection
+Library11=runtimepermissions
+Library12=scaleimageview
+Library13=simplemediamanager
+Library14=xui
+Library15=xui views
+Library16=zoomimageview
+Library17=gesturedetector
+Library2=aspopupmenuadvanced
+Library3=asviewpager
+Library4=b4xpages
+Library5=bitmapcreator
+Library6=core
+Library7=javaobject
+Library8=jsoup
+Library9=okhttputils2
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="31"/>~\n~<uses-permission android:name="android.permission.SET_WALLPAPER"/>~\n~<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="31"/>~\n~<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="31"/>~\n~	~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.DarkTheme)~\n~'End of default text.~\n~SetApplicationAttribute(android:theme, "@style/DarkTheme")~\n~CreateResource(values, colors.xml,~\n~<resources>~\n~    <color name="actionbar">#202126</color>~\n~	<color name="statusbar">#202126</color>~\n~	<color name="textColorPrimary">#ffffffff</color>~\n~	<color name="navigationBar">#202126</color>~\n~    <color name="colorAccent">#FF4081</color>~\n~	<color name="colorTint">#FFFFFF</color>~\n~</resources>~\n~)~\n~CreateResource(values-v20, theme.xml,~\n~<resources>~\n~ <style name="DarkTheme" parent="@android:style/Theme.Material.Light">~\n~		 <item name="android:colorPrimary">@color/actionbar</item>~\n~		 <item name="android:colorPrimaryDark">@color/statusbar</item>~\n~		 <item name="android:textColorPrimary">@color/textColorPrimary</item>~\n~		 <item name="android:navigationBarColor">@color/navigationBar</item>~\n~         <item name="android:colorAccent">@color/colorAccent</item>~\n~	   ~\n~  <item name="android:textColorSecondary">#FF00FF</item> ~\n~  <item name="android:textColor">#FFFFFF</item>~\n~  <item name="android:textColorLink">#b71c1c</item>~\n~  <item name="android:textColorHighlight">#FF9F9F</item>~\n~  ~\n~  </style>~\n~</resources>~\n~)~\n~CreateResource(values-v14, theme.xml,~\n~<resources>~\n~    <style name="DarkTheme" parent="@android:style/Theme.Holo.Light">~\n~		<item name="android:actionBarStyle">@style/CustomActionBarStyle</item>~\n~    </style>~\n~	<style name="CustomActionBarStyle" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">~\n~	    <item name="android:background">@color/actionbar</item>~\n~	</style>~\n~</resources>~\n~)
+Module1=Activity2
+Module2=|relative|..\B4XMainPage
+Module3=ControlLister
+Module4=ImageServer
+Module5=ImageViewerB4X
+Module6=Starter
+Module7=ThemeColors
+Module8=Viewer
+Module9=WallHaven
+NumberOfFiles=19
+NumberOfLibraries=17
+NumberOfModules=9
+Version=12.2
+@EndOfDesignText@
+#Region  Project Attributes 
+	#ApplicationLabel: WallpaperHQ
+	#VersionCode: 001
+	#VersionName: Alpha
+	'SupportedOrientations possible values: unspecified, landscape or portrait.
+	#SupportedOrientations: portrait
+	#CanInstallToExternalStorage: True
+#End Region
+
+#AdditionalJar: ScaleImage
+
+#Region  Activity Attributes 
+	#FullScreen: False
+	#IncludeTitle: False
+#End Region
+
+#if AAB
+   #SignKeyFile: C:\Keyfile\my-release-key.jks
+    #SignKeyPassword: 29532505
+    #SignKeyAlgorithm: -digestalg SHA1 -sigalg SHA256withRSA
+#end if
+
+'#BridgeLogger: True
+
+Sub Process_Globals
+	Public ActionBarHomeClicked As Boolean
+	Public RP As RuntimePermissions
+	
+	Public DownloadedWallpapers As String '= File.Combine(File.DirDefaultExternal, "Wallpapers")
+	
+End Sub
+
+Sub Globals
+
+End Sub
+
+Sub Activity_Create(FirstTime As Boolean)
+	
+
+	
+	RP.CheckAndRequest(RP.PERMISSION_READ_EXTERNAL_STORAGE)
+RP.CheckAndRequest(RP.PERMISSION_WRITE_EXTERNAL_STORAGE)
+	RP.CheckAndRequest("android.permission.SET_WALLPAPER")
+	DownloadedWallpapers =	RP.GetSafeDirDefaultExternal("Wallpapers")
+	
+	Dim pm As B4XPagesManager
+	pm.Initialize(Activity)
+End Sub
+
+'Template version: B4A-1.01
+#Region Delegates
+
+Sub Activity_ActionBarHomeClick
+	ActionBarHomeClicked = True
+	B4XPages.Delegate.Activity_ActionBarHomeClick
+	ActionBarHomeClicked = False
+End Sub
+
+Sub Activity_KeyPress (KeyCode As Int) As Boolean
+	Return B4XPages.Delegate.Activity_KeyPress(KeyCode)
+End Sub
+
+Sub Activity_Resume
+	B4XPages.Delegate.Activity_Resume
+End Sub
+
+Sub Activity_Pause (UserClosed As Boolean)
+	B4XPages.Delegate.Activity_Pause
+End Sub
+
+Sub Activity_PermissionResult (Permission As String, Result As Boolean)
+	B4XPages.Delegate.Activity_PermissionResult(Permission, Result)
+End Sub
+
+Sub Create_Menu (Menu As Object)
+	B4XPages.Delegate.Create_Menu(Menu)
+End Sub
+
+
+
+#if Java
+public boolean _onCreateOptionsMenu(android.view.Menu menu) {
+	 processBA.raiseEvent(null, "create_menu", menu);
+	 return true;
+	
+}
+#End If
+#End Region
+
+'Program code should go into B4XMainPage and other pages.
