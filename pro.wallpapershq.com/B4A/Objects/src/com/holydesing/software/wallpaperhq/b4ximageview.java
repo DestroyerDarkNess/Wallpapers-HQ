@@ -37,10 +37,10 @@ public int _mbackgroundcolor = 0;
 public int _mcornersradius = 0;
 public b4a.example.dateutils _dateutils = null;
 public com.holydesing.software.wallpaperhq.main _main = null;
-public com.holydesing.software.wallpaperhq.activity2 _activity2 = null;
 public com.holydesing.software.wallpaperhq.starter _starter = null;
-public com.holydesing.software.wallpaperhq.viewer _viewer = null;
+public com.holydesing.software.wallpaperhq.activity2 _activity2 = null;
 public com.holydesing.software.wallpaperhq.themecolors _themecolors = null;
+public com.holydesing.software.wallpaperhq.viewer _viewer = null;
 public com.holydesing.software.wallpaperhq.b4xpages _b4xpages = null;
 public com.holydesing.software.wallpaperhq.b4xcollections _b4xcollections = null;
 public com.holydesing.software.wallpaperhq.httputils2service _httputils2service = null;
@@ -267,7 +267,7 @@ _imageviewheight = (float) (_mbitmap.getHeight());
  break; }
 default: {
  //BA.debugLineNum = 104;BA.debugLine="Log(\"Invalid resize mode: \"  & mResizeMode)";
-__c.LogImpl("941156635","Invalid resize mode: "+_mresizemode,0);
+__c.LogImpl("943581467","Invalid resize mode: "+_mresizemode,0);
  break; }
 }
 ;

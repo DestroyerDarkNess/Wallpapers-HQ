@@ -352,8 +352,8 @@ public static float _circlex = 0f;
 public static float _circley = 0f;
 public b4a.example.dateutils _dateutils = null;
 public com.holydesing.software.wallpaperhq.main _main = null;
-public com.holydesing.software.wallpaperhq.activity2 _activity2 = null;
 public com.holydesing.software.wallpaperhq.starter _starter = null;
+public com.holydesing.software.wallpaperhq.activity2 _activity2 = null;
 public com.holydesing.software.wallpaperhq.themecolors _themecolors = null;
 public com.holydesing.software.wallpaperhq.b4xpages _b4xpages = null;
 public com.holydesing.software.wallpaperhq.b4xcollections _b4xcollections = null;
@@ -392,7 +392,7 @@ _viewery = (float) (mostCurrent._scaleimageview1.getCenterY()/(double)mostCurren
  } 
        catch (Exception e8) {
 			processBA.setLastException(e8); //BA.debugLineNum = 104;BA.debugLine="LogColor(\"Error in Pause: \" & LastException.Mess";
-anywheresoftware.b4a.keywords.Common.LogImpl("64849675","Error in Pause: "+anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage(),anywheresoftware.b4a.keywords.Common.Colors.Red);
+anywheresoftware.b4a.keywords.Common.LogImpl("39306123","Error in Pause: "+anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage(),anywheresoftware.b4a.keywords.Common.Colors.Red);
  };
  //BA.debugLineNum = 106;BA.debugLine="End Sub";
 return "";
@@ -425,7 +425,7 @@ this.state = 1;
  //BA.debugLineNum = 51;BA.debugLine="Dim Url As String = \"https://w.wallhaven.cc/full/";
 _url = "https://w.wallhaven.cc/full/g7/wallhaven-g7zv67.jpg";
  //BA.debugLineNum = 53;BA.debugLine="Log(\"1\")";
-anywheresoftware.b4a.keywords.Common.LogImpl("64784131","1",0);
+anywheresoftware.b4a.keywords.Common.LogImpl("39240579","1",0);
  //BA.debugLineNum = 54;BA.debugLine="Dim j As HttpJob";
 _j = new com.holydesing.software.wallpaperhq.httpjob();
  //BA.debugLineNum = 55;BA.debugLine="j.Initialize(\"img\", Me)";
@@ -442,7 +442,7 @@ this.state = 1;
 _j = (com.holydesing.software.wallpaperhq.httpjob) result[0];
 ;
  //BA.debugLineNum = 58;BA.debugLine="Log(\"2\")";
-anywheresoftware.b4a.keywords.Common.LogImpl("64784136","2",0);
+anywheresoftware.b4a.keywords.Common.LogImpl("39240584","2",0);
  //BA.debugLineNum = 59;BA.debugLine="If j.Success Then";
 if (true) break;
 
@@ -575,7 +575,7 @@ return "";
 public static String  _panel1_ondoubletap(float _x,float _y,Object _motionevent) throws Exception{
  //BA.debugLineNum = 171;BA.debugLine="Sub Panel1_onDoubleTap(X As Float, Y As Float, Mot";
  //BA.debugLineNum = 172;BA.debugLine="Log(\"Panel1_onDoubleTap \" & gestures.getAction(Mo";
-anywheresoftware.b4a.keywords.Common.LogImpl("65111809","Panel1_onDoubleTap "+BA.NumberToString(mostCurrent._gestures.getAction((android.view.MotionEvent)(_motionevent)))+" : "+BA.NumberToString(_x)+", "+BA.NumberToString(_y),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("39568257","Panel1_onDoubleTap "+BA.NumberToString(mostCurrent._gestures.getAction((android.view.MotionEvent)(_motionevent)))+" : "+BA.NumberToString(_x)+", "+BA.NumberToString(_y),0);
  //BA.debugLineNum = 173;BA.debugLine="End Sub";
 return "";
 }
@@ -584,9 +584,9 @@ public static String  _panel1_ondown(float _x,float _y,Object _motionevent) thro
  //BA.debugLineNum = 176;BA.debugLine="TouchDown = True";
 _touchdown = anywheresoftware.b4a.keywords.Common.True;
  //BA.debugLineNum = 177;BA.debugLine="Log(\"***************************\")";
-anywheresoftware.b4a.keywords.Common.LogImpl("65177346","***************************",0);
+anywheresoftware.b4a.keywords.Common.LogImpl("39633794","***************************",0);
  //BA.debugLineNum = 178;BA.debugLine="Log(\"Panel1_onDown \" & gestures.getAction(MotionE";
-anywheresoftware.b4a.keywords.Common.LogImpl("65177347","Panel1_onDown "+BA.NumberToString(mostCurrent._gestures.getAction((android.view.MotionEvent)(_motionevent)))+" : "+BA.NumberToString(_x)+", "+BA.NumberToString(_y),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("39633795","Panel1_onDown "+BA.NumberToString(mostCurrent._gestures.getAction((android.view.MotionEvent)(_motionevent)))+" : "+BA.NumberToString(_x)+", "+BA.NumberToString(_y),0);
  //BA.debugLineNum = 179;BA.debugLine="End Sub";
 return "";
 }
@@ -596,14 +596,14 @@ public static String  _panel1_ondrag(float _deltax,float _deltay,Object _motione
 if (_deltax==0 && _deltay==0) { 
 if (true) return "";};
  //BA.debugLineNum = 183;BA.debugLine="Log(\"Panel1_onDrag \" & gestures.getAction(MotionE";
-anywheresoftware.b4a.keywords.Common.LogImpl("65242882","Panel1_onDrag "+BA.NumberToString(mostCurrent._gestures.getAction((android.view.MotionEvent)(_motionevent)))+" : "+BA.NumberToString(_deltax)+", "+BA.NumberToString(_deltay),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("39699330","Panel1_onDrag "+BA.NumberToString(mostCurrent._gestures.getAction((android.view.MotionEvent)(_motionevent)))+" : "+BA.NumberToString(_deltax)+", "+BA.NumberToString(_deltay),0);
  //BA.debugLineNum = 184;BA.debugLine="End Sub";
 return "";
 }
 public static String  _panel1_onlongpress(float _x,float _y,Object _motionevent) throws Exception{
  //BA.debugLineNum = 186;BA.debugLine="Sub Panel1_onLongPress(X As Float, Y As Float, Mot";
  //BA.debugLineNum = 187;BA.debugLine="Log(\"Panel1_onLongPress \" & gestures.getAction(Mo";
-anywheresoftware.b4a.keywords.Common.LogImpl("65308417","Panel1_onLongPress "+BA.NumberToString(mostCurrent._gestures.getAction((android.view.MotionEvent)(_motionevent)))+" : "+BA.NumberToString(_x)+", "+BA.NumberToString(_y),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("39764865","Panel1_onLongPress "+BA.NumberToString(mostCurrent._gestures.getAction((android.view.MotionEvent)(_motionevent)))+" : "+BA.NumberToString(_x)+", "+BA.NumberToString(_y),0);
  //BA.debugLineNum = 188;BA.debugLine="ScaleImageView1.BringToFront";
 mostCurrent._scaleimageview1.BringToFront();
  //BA.debugLineNum = 189;BA.debugLine="End Sub";
@@ -612,42 +612,42 @@ return "";
 public static String  _panel1_onpinchclose(float _newdistance,float _previousdistance,Object _motionevent) throws Exception{
  //BA.debugLineNum = 191;BA.debugLine="Sub Panel1_onPinchClose(NewDistance As Float, Prev";
  //BA.debugLineNum = 192;BA.debugLine="Log(\"Panel1_onPinchClose \" & gestures.getAction(M";
-anywheresoftware.b4a.keywords.Common.LogImpl("65373953","Panel1_onPinchClose "+BA.NumberToString(mostCurrent._gestures.getAction((android.view.MotionEvent)(_motionevent)))+" : "+BA.NumberToString(_newdistance)+", "+BA.NumberToString(_previousdistance),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("39830401","Panel1_onPinchClose "+BA.NumberToString(mostCurrent._gestures.getAction((android.view.MotionEvent)(_motionevent)))+" : "+BA.NumberToString(_newdistance)+", "+BA.NumberToString(_previousdistance),0);
  //BA.debugLineNum = 193;BA.debugLine="End Sub";
 return "";
 }
 public static String  _panel1_onpinchopen(float _newdistance,float _previousdistance,Object _motionevent) throws Exception{
  //BA.debugLineNum = 195;BA.debugLine="Sub Panel1_onPinchOpen(NewDistance As Float, Previ";
  //BA.debugLineNum = 196;BA.debugLine="Log(\"Panel1_onPinchOpen \" & gestures.getAction(Mo";
-anywheresoftware.b4a.keywords.Common.LogImpl("65439489","Panel1_onPinchOpen "+BA.NumberToString(mostCurrent._gestures.getAction((android.view.MotionEvent)(_motionevent)))+" : "+BA.NumberToString(_newdistance)+", "+BA.NumberToString(_previousdistance),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("39895937","Panel1_onPinchOpen "+BA.NumberToString(mostCurrent._gestures.getAction((android.view.MotionEvent)(_motionevent)))+" : "+BA.NumberToString(_newdistance)+", "+BA.NumberToString(_previousdistance),0);
  //BA.debugLineNum = 197;BA.debugLine="End Sub";
 return "";
 }
 public static String  _panel1_onrotation(double _degrees,Object _motionevent) throws Exception{
  //BA.debugLineNum = 199;BA.debugLine="Sub Panel1_onRotation(Degrees As Double, MotionEve";
  //BA.debugLineNum = 200;BA.debugLine="Log(\"Panel1_onRotation \" & gestures.getAction(Mot";
-anywheresoftware.b4a.keywords.Common.LogImpl("65505025","Panel1_onRotation "+BA.NumberToString(mostCurrent._gestures.getAction((android.view.MotionEvent)(_motionevent)))+" : "+BA.NumberToString(_degrees),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("39961473","Panel1_onRotation "+BA.NumberToString(mostCurrent._gestures.getAction((android.view.MotionEvent)(_motionevent)))+" : "+BA.NumberToString(_degrees),0);
  //BA.debugLineNum = 201;BA.debugLine="End Sub";
 return "";
 }
 public static String  _panel1_onscroll(float _distancex,float _distancey,Object _motionevent1,Object _motionevent2) throws Exception{
  //BA.debugLineNum = 203;BA.debugLine="Sub Panel1_onScroll(distanceX As Float, distanceY";
  //BA.debugLineNum = 204;BA.debugLine="Log(\"Panel1_onScroll \" & gestures.getAction(Motio";
-anywheresoftware.b4a.keywords.Common.LogImpl("65570561","Panel1_onScroll "+BA.NumberToString(mostCurrent._gestures.getAction((android.view.MotionEvent)(_motionevent1)))+" "+BA.NumberToString(mostCurrent._gestures.getAction((android.view.MotionEvent)(_motionevent2)))+" : "+BA.NumberToString(_distancex)+", "+BA.NumberToString(_distancey),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("310027009","Panel1_onScroll "+BA.NumberToString(mostCurrent._gestures.getAction((android.view.MotionEvent)(_motionevent1)))+" "+BA.NumberToString(mostCurrent._gestures.getAction((android.view.MotionEvent)(_motionevent2)))+" : "+BA.NumberToString(_distancex)+", "+BA.NumberToString(_distancey),0);
  //BA.debugLineNum = 205;BA.debugLine="End Sub";
 return "";
 }
 public static String  _panel1_onshowpress(float _x,float _y,Object _motionevent) throws Exception{
  //BA.debugLineNum = 207;BA.debugLine="Sub Panel1_onShowPress(X As Float, Y As Float, Mot";
  //BA.debugLineNum = 208;BA.debugLine="Log(\"Panel1_onShowPress \" & gestures.getAction(Mo";
-anywheresoftware.b4a.keywords.Common.LogImpl("65636097","Panel1_onShowPress "+BA.NumberToString(mostCurrent._gestures.getAction((android.view.MotionEvent)(_motionevent)))+" : "+BA.NumberToString(_x)+", "+BA.NumberToString(_y),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("310092545","Panel1_onShowPress "+BA.NumberToString(mostCurrent._gestures.getAction((android.view.MotionEvent)(_motionevent)))+" : "+BA.NumberToString(_x)+", "+BA.NumberToString(_y),0);
  //BA.debugLineNum = 209;BA.debugLine="End Sub";
 return "";
 }
 public static String  _panel1_onsingletapconfirmed(float _x,float _y,Object _motionevent) throws Exception{
  //BA.debugLineNum = 211;BA.debugLine="Sub Panel1_onSingleTapConfirmed(X As Float, Y As F";
  //BA.debugLineNum = 212;BA.debugLine="Log(\"Panel1_onSingleTapConfirmed \" & gestures.get";
-anywheresoftware.b4a.keywords.Common.LogImpl("65701633","Panel1_onSingleTapConfirmed "+BA.NumberToString(mostCurrent._gestures.getAction((android.view.MotionEvent)(_motionevent)))+" : "+BA.NumberToString(_x)+", "+BA.NumberToString(_y),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("310158081","Panel1_onSingleTapConfirmed "+BA.NumberToString(mostCurrent._gestures.getAction((android.view.MotionEvent)(_motionevent)))+" : "+BA.NumberToString(_x)+", "+BA.NumberToString(_y),0);
  //BA.debugLineNum = 213;BA.debugLine="End Sub";
 return "";
 }
@@ -658,7 +658,7 @@ if (_action==mostCurrent._gestures.ACTION_UP) {
  //BA.debugLineNum = 217;BA.debugLine="TouchDown = False";
 _touchdown = anywheresoftware.b4a.keywords.Common.False;
  //BA.debugLineNum = 218;BA.debugLine="Log(\"------------------------------------\")";
-anywheresoftware.b4a.keywords.Common.LogImpl("65767171","------------------------------------",0);
+anywheresoftware.b4a.keywords.Common.LogImpl("310223619","------------------------------------",0);
  };
  //BA.debugLineNum = 220;BA.debugLine="Return True";
 if (true) return anywheresoftware.b4a.keywords.Common.True;

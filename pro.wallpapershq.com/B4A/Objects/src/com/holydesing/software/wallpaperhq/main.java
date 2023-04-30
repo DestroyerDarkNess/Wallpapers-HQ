@@ -340,10 +340,10 @@ public static boolean _actionbarhomeclicked = false;
 public static anywheresoftware.b4a.objects.RuntimePermissions _rp = null;
 public static String _downloadedwallpapers = "";
 public b4a.example.dateutils _dateutils = null;
-public com.holydesing.software.wallpaperhq.activity2 _activity2 = null;
 public com.holydesing.software.wallpaperhq.starter _starter = null;
-public com.holydesing.software.wallpaperhq.viewer _viewer = null;
+public com.holydesing.software.wallpaperhq.activity2 _activity2 = null;
 public com.holydesing.software.wallpaperhq.themecolors _themecolors = null;
+public com.holydesing.software.wallpaperhq.viewer _viewer = null;
 public com.holydesing.software.wallpaperhq.b4xpages _b4xpages = null;
 public com.holydesing.software.wallpaperhq.b4xcollections _b4xcollections = null;
 public com.holydesing.software.wallpaperhq.httputils2service _httputils2service = null;
@@ -356,67 +356,69 @@ vis = vis | (activity2.mostCurrent != null);
 vis = vis | (viewer.mostCurrent != null);
 return vis;}
 public static String  _activity_actionbarhomeclick() throws Exception{
- //BA.debugLineNum = 53;BA.debugLine="Sub Activity_ActionBarHomeClick";
- //BA.debugLineNum = 54;BA.debugLine="ActionBarHomeClicked = True";
+ //BA.debugLineNum = 55;BA.debugLine="Sub Activity_ActionBarHomeClick";
+ //BA.debugLineNum = 56;BA.debugLine="ActionBarHomeClicked = True";
 _actionbarhomeclicked = anywheresoftware.b4a.keywords.Common.True;
- //BA.debugLineNum = 55;BA.debugLine="B4XPages.Delegate.Activity_ActionBarHomeClick";
+ //BA.debugLineNum = 57;BA.debugLine="B4XPages.Delegate.Activity_ActionBarHomeClick";
 mostCurrent._b4xpages._delegate /*com.holydesing.software.wallpaperhq.b4xpagesdelegator*/ ._activity_actionbarhomeclick /*String*/ ();
- //BA.debugLineNum = 56;BA.debugLine="ActionBarHomeClicked = False";
+ //BA.debugLineNum = 58;BA.debugLine="ActionBarHomeClicked = False";
 _actionbarhomeclicked = anywheresoftware.b4a.keywords.Common.False;
- //BA.debugLineNum = 57;BA.debugLine="End Sub";
+ //BA.debugLineNum = 59;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_create(boolean _firsttime) throws Exception{
 com.holydesing.software.wallpaperhq.b4xpagesmanager _pm = null;
  //BA.debugLineNum = 37;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
- //BA.debugLineNum = 41;BA.debugLine="RP.CheckAndRequest(RP.PERMISSION_READ_EXTERNAL_ST";
+ //BA.debugLineNum = 39;BA.debugLine="Log(\"FirstTime \" & FirstTime)";
+anywheresoftware.b4a.keywords.Common.LogImpl("3131074","FirstTime "+BA.ObjectToString(_firsttime),0);
+ //BA.debugLineNum = 41;BA.debugLine="RP.CheckAndRequest(RP.PERMISSION_READ_EXTERNAL_S";
 _rp.CheckAndRequest(processBA,_rp.PERMISSION_READ_EXTERNAL_STORAGE);
- //BA.debugLineNum = 42;BA.debugLine="RP.CheckAndRequest(RP.PERMISSION_WRITE_EXTERNAL_ST";
+ //BA.debugLineNum = 42;BA.debugLine="RP.CheckAndRequest(RP.PERMISSION_WRITE_EXTERNAL_";
 _rp.CheckAndRequest(processBA,_rp.PERMISSION_WRITE_EXTERNAL_STORAGE);
- //BA.debugLineNum = 43;BA.debugLine="RP.CheckAndRequest(\"android.permission.SET_WALLPA";
+ //BA.debugLineNum = 43;BA.debugLine="RP.CheckAndRequest(\"android.permission.SET_WALLP";
 _rp.CheckAndRequest(processBA,"android.permission.SET_WALLPAPER");
- //BA.debugLineNum = 44;BA.debugLine="DownloadedWallpapers =	RP.GetSafeDirDefaultExtern";
+ //BA.debugLineNum = 44;BA.debugLine="DownloadedWallpapers =	RP.GetSafeDirDefaultExter";
 _downloadedwallpapers = _rp.GetSafeDirDefaultExternal("Wallpapers");
  //BA.debugLineNum = 46;BA.debugLine="Dim pm As B4XPagesManager";
 _pm = new com.holydesing.software.wallpaperhq.b4xpagesmanager();
  //BA.debugLineNum = 47;BA.debugLine="pm.Initialize(Activity)";
 _pm._initialize /*String*/ (mostCurrent.activityBA,mostCurrent._activity);
- //BA.debugLineNum = 48;BA.debugLine="End Sub";
+ //BA.debugLineNum = 50;BA.debugLine="End Sub";
 return "";
 }
 public static boolean  _activity_keypress(int _keycode) throws Exception{
- //BA.debugLineNum = 59;BA.debugLine="Sub Activity_KeyPress (KeyCode As Int) As Boolean";
- //BA.debugLineNum = 60;BA.debugLine="Return B4XPages.Delegate.Activity_KeyPress(KeyCod";
+ //BA.debugLineNum = 61;BA.debugLine="Sub Activity_KeyPress (KeyCode As Int) As Boolean";
+ //BA.debugLineNum = 62;BA.debugLine="Return B4XPages.Delegate.Activity_KeyPress(KeyCod";
 if (true) return mostCurrent._b4xpages._delegate /*com.holydesing.software.wallpaperhq.b4xpagesdelegator*/ ._activity_keypress /*boolean*/ (_keycode);
- //BA.debugLineNum = 61;BA.debugLine="End Sub";
+ //BA.debugLineNum = 63;BA.debugLine="End Sub";
 return false;
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
- //BA.debugLineNum = 67;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
- //BA.debugLineNum = 68;BA.debugLine="B4XPages.Delegate.Activity_Pause";
+ //BA.debugLineNum = 69;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+ //BA.debugLineNum = 70;BA.debugLine="B4XPages.Delegate.Activity_Pause";
 mostCurrent._b4xpages._delegate /*com.holydesing.software.wallpaperhq.b4xpagesdelegator*/ ._activity_pause /*String*/ ();
- //BA.debugLineNum = 69;BA.debugLine="End Sub";
+ //BA.debugLineNum = 71;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_permissionresult(String _permission,boolean _result) throws Exception{
- //BA.debugLineNum = 71;BA.debugLine="Sub Activity_PermissionResult (Permission As Strin";
- //BA.debugLineNum = 72;BA.debugLine="B4XPages.Delegate.Activity_PermissionResult(Permi";
+ //BA.debugLineNum = 73;BA.debugLine="Sub Activity_PermissionResult (Permission As Strin";
+ //BA.debugLineNum = 74;BA.debugLine="B4XPages.Delegate.Activity_PermissionResult(Permi";
 mostCurrent._b4xpages._delegate /*com.holydesing.software.wallpaperhq.b4xpagesdelegator*/ ._activity_permissionresult /*String*/ (_permission,_result);
- //BA.debugLineNum = 73;BA.debugLine="End Sub";
+ //BA.debugLineNum = 75;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_resume() throws Exception{
- //BA.debugLineNum = 63;BA.debugLine="Sub Activity_Resume";
- //BA.debugLineNum = 64;BA.debugLine="B4XPages.Delegate.Activity_Resume";
+ //BA.debugLineNum = 65;BA.debugLine="Sub Activity_Resume";
+ //BA.debugLineNum = 66;BA.debugLine="B4XPages.Delegate.Activity_Resume";
 mostCurrent._b4xpages._delegate /*com.holydesing.software.wallpaperhq.b4xpagesdelegator*/ ._activity_resume /*String*/ ();
- //BA.debugLineNum = 65;BA.debugLine="End Sub";
+ //BA.debugLineNum = 67;BA.debugLine="End Sub";
 return "";
 }
 public static String  _create_menu(Object _menu) throws Exception{
- //BA.debugLineNum = 75;BA.debugLine="Sub Create_Menu (Menu As Object)";
- //BA.debugLineNum = 76;BA.debugLine="B4XPages.Delegate.Create_Menu(Menu)";
+ //BA.debugLineNum = 77;BA.debugLine="Sub Create_Menu (Menu As Object)";
+ //BA.debugLineNum = 78;BA.debugLine="B4XPages.Delegate.Create_Menu(Menu)";
 mostCurrent._b4xpages._delegate /*com.holydesing.software.wallpaperhq.b4xpagesdelegator*/ ._create_menu /*String*/ (_menu);
- //BA.debugLineNum = 77;BA.debugLine="End Sub";
+ //BA.debugLineNum = 79;BA.debugLine="End Sub";
 return "";
 }
 public static String  _globals() throws Exception{
@@ -432,10 +434,10 @@ public static void initializeProcessGlobals() {
 		try {
 		        b4a.example.dateutils._process_globals();
 main._process_globals();
-activity2._process_globals();
 starter._process_globals();
-viewer._process_globals();
+activity2._process_globals();
 themecolors._process_globals();
+viewer._process_globals();
 b4xpages._process_globals();
 b4xcollections._process_globals();
 httputils2service._process_globals();

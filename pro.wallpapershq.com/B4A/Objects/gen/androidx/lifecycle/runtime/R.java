@@ -1459,4 +1459,7 @@ public final class R {
      */
     public static final int SwipeRefreshLayout_swipeRefreshLayoutProgressSpinnerBackgroundColor=0;
   }
+  public static final class xml {
+    public static final int provider_paths=0x7f0d0000;
+  }
 }

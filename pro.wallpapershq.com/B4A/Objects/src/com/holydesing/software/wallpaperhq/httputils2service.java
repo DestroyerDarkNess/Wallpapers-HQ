@@ -131,10 +131,10 @@ public static String _tempfolder = "";
 public static int _taskcounter = 0;
 public b4a.example.dateutils _dateutils = null;
 public com.holydesing.software.wallpaperhq.main _main = null;
-public com.holydesing.software.wallpaperhq.activity2 _activity2 = null;
 public com.holydesing.software.wallpaperhq.starter _starter = null;
-public com.holydesing.software.wallpaperhq.viewer _viewer = null;
+public com.holydesing.software.wallpaperhq.activity2 _activity2 = null;
 public com.holydesing.software.wallpaperhq.themecolors _themecolors = null;
+public com.holydesing.software.wallpaperhq.viewer _viewer = null;
 public com.holydesing.software.wallpaperhq.b4xpages _b4xpages = null;
 public com.holydesing.software.wallpaperhq.b4xcollections _b4xcollections = null;
 public com.holydesing.software.wallpaperhq.xuiviewsutils _xuiviewsutils = null;
@@ -146,7 +146,7 @@ _job = (com.holydesing.software.wallpaperhq.httpjob)(_taskidtojob.Get((Object)(_
  //BA.debugLineNum = 151;BA.debugLine="If job = Null Then";
 if (_job== null) { 
  //BA.debugLineNum = 152;BA.debugLine="Log(\"HttpUtils2Service: job completed multiple t";
-anywheresoftware.b4a.keywords.Common.LogImpl("626476550","HttpUtils2Service: job completed multiple times - "+BA.NumberToString(_taskid),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("328901382","HttpUtils2Service: job completed multiple times - "+BA.NumberToString(_taskid),0);
  //BA.debugLineNum = 153;BA.debugLine="Return";
 if (true) return "";
  };
@@ -165,7 +165,7 @@ public static String  _hc_responseerror(anywheresoftware.b4h.okhttp.OkHttpClient
 com.holydesing.software.wallpaperhq.httpjob _job = null;
  //BA.debugLineNum = 109;BA.debugLine="Sub hc_ResponseError (Response As OkHttpResponse,";
  //BA.debugLineNum = 111;BA.debugLine="Log($\"ResponseError. Reason: ${Reason}, Response:";
-anywheresoftware.b4a.keywords.Common.LogImpl("626411010",("ResponseError. Reason: "+anywheresoftware.b4a.keywords.Common.SmartStringFormatter("",(Object)(_reason))+", Response: "+anywheresoftware.b4a.keywords.Common.SmartStringFormatter("",(Object)(_response.getErrorResponse()))+""),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("328835842",("ResponseError. Reason: "+anywheresoftware.b4a.keywords.Common.SmartStringFormatter("",(Object)(_reason))+", Response: "+anywheresoftware.b4a.keywords.Common.SmartStringFormatter("",(Object)(_response.getErrorResponse()))+""),0);
  //BA.debugLineNum = 113;BA.debugLine="Response.Release";
 _response.Release();
  //BA.debugLineNum = 114;BA.debugLine="Dim job As HttpJob = TaskIdToJob.Get(TaskId)";
@@ -173,7 +173,7 @@ _job = (com.holydesing.software.wallpaperhq.httpjob)(_taskidtojob.Get((Object)(_
  //BA.debugLineNum = 115;BA.debugLine="If job = Null Then";
 if (_job== null) { 
  //BA.debugLineNum = 116;BA.debugLine="Log(\"HttpUtils2Service (hc_ResponseError): job c";
-anywheresoftware.b4a.keywords.Common.LogImpl("626411015","HttpUtils2Service (hc_ResponseError): job completed multiple times - "+BA.NumberToString(_taskid),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("328835847","HttpUtils2Service (hc_ResponseError): job completed multiple times - "+BA.NumberToString(_taskid),0);
  //BA.debugLineNum = 117;BA.debugLine="Return";
 if (true) return "";
  };
@@ -199,7 +199,7 @@ _job = (com.holydesing.software.wallpaperhq.httpjob)(_taskidtojob.Get((Object)(_
  //BA.debugLineNum = 88;BA.debugLine="If job = Null Then";
 if (_job== null) { 
  //BA.debugLineNum = 89;BA.debugLine="Log(\"HttpUtils2Service (hc_ResponseSuccess): job";
-anywheresoftware.b4a.keywords.Common.LogImpl("626279939","HttpUtils2Service (hc_ResponseSuccess): job completed multiple times - "+BA.NumberToString(_taskid),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("328704771","HttpUtils2Service (hc_ResponseSuccess): job completed multiple times - "+BA.NumberToString(_taskid),0);
  //BA.debugLineNum = 90;BA.debugLine="Return";
 if (true) return "";
  };
@@ -251,9 +251,9 @@ anywheresoftware.b4a.keywords.Common.File.Delete(_tempfolder,"~test.test");
  } 
        catch (Exception e6) {
 			processBA.setLastException(e6); //BA.debugLineNum = 34;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("626017799",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(processBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("328442631",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(processBA)),0);
  //BA.debugLineNum = 35;BA.debugLine="Log(\"Switching to File.DirInternal\")";
-anywheresoftware.b4a.keywords.Common.LogImpl("626017800","Switching to File.DirInternal",0);
+anywheresoftware.b4a.keywords.Common.LogImpl("328442632","Switching to File.DirInternal",0);
  //BA.debugLineNum = 36;BA.debugLine="TempFolder = File.DirInternal";
 _tempfolder = anywheresoftware.b4a.keywords.Common.File.getDirInternal();
  };

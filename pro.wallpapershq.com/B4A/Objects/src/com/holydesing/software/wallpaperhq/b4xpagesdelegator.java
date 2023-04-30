@@ -26,10 +26,10 @@ public class b4xpagesdelegator extends B4AClass.ImplB4AClass implements BA.SubDe
  public anywheresoftware.b4a.keywords.Common __c = null;
 public b4a.example.dateutils _dateutils = null;
 public com.holydesing.software.wallpaperhq.main _main = null;
-public com.holydesing.software.wallpaperhq.activity2 _activity2 = null;
 public com.holydesing.software.wallpaperhq.starter _starter = null;
-public com.holydesing.software.wallpaperhq.viewer _viewer = null;
+public com.holydesing.software.wallpaperhq.activity2 _activity2 = null;
 public com.holydesing.software.wallpaperhq.themecolors _themecolors = null;
+public com.holydesing.software.wallpaperhq.viewer _viewer = null;
 public com.holydesing.software.wallpaperhq.b4xpages _b4xpages = null;
 public com.holydesing.software.wallpaperhq.b4xcollections _b4xcollections = null;
 public com.holydesing.software.wallpaperhq.httputils2service _httputils2service = null;

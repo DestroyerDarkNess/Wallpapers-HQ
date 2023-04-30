@@ -28,10 +28,10 @@ public byte[] _mbuffer = null;
 public int _mlength = 0;
 public b4a.example.dateutils _dateutils = null;
 public com.holydesing.software.wallpaperhq.main _main = null;
-public com.holydesing.software.wallpaperhq.activity2 _activity2 = null;
 public com.holydesing.software.wallpaperhq.starter _starter = null;
-public com.holydesing.software.wallpaperhq.viewer _viewer = null;
+public com.holydesing.software.wallpaperhq.activity2 _activity2 = null;
 public com.holydesing.software.wallpaperhq.themecolors _themecolors = null;
+public com.holydesing.software.wallpaperhq.viewer _viewer = null;
 public com.holydesing.software.wallpaperhq.b4xpages _b4xpages = null;
 public com.holydesing.software.wallpaperhq.b4xcollections _b4xcollections = null;
 public com.holydesing.software.wallpaperhq.httputils2service _httputils2service = null;
@@ -174,7 +174,7 @@ byte[] _afterindex = null;
 if (_index>=_mlength) { 
  //BA.debugLineNum = 45;BA.debugLine="If Index > mLength Then Log(\"Index too large\")";
 if (_index>_mlength) { 
-__c.LogImpl("919070978","Index too large",0);};
+__c.LogImpl("921495810","Index too large",0);};
  //BA.debugLineNum = 46;BA.debugLine="Append(Data)";
 _append(_data);
  }else {
@@ -216,7 +216,7 @@ public String  _set(int _index,byte[] _data) throws Exception{
 if (_index>=_mlength) { 
  //BA.debugLineNum = 58;BA.debugLine="If Index > mLength Then Log(\"Index too large\")";
 if (_index>_mlength) { 
-__c.LogImpl("919136514","Index too large",0);};
+__c.LogImpl("921561346","Index too large",0);};
  //BA.debugLineNum = 59;BA.debugLine="Append(Data)";
 _append(_data);
  }else {

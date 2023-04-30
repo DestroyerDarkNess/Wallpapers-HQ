@@ -46,10 +46,10 @@ public boolean _webp_supported = false;
 public com.holydesing.software.wallpaperhq.simplemediamanager _mmanager = null;
 public b4a.example.dateutils _dateutils = null;
 public com.holydesing.software.wallpaperhq.main _main = null;
-public com.holydesing.software.wallpaperhq.activity2 _activity2 = null;
 public com.holydesing.software.wallpaperhq.starter _starter = null;
-public com.holydesing.software.wallpaperhq.viewer _viewer = null;
+public com.holydesing.software.wallpaperhq.activity2 _activity2 = null;
 public com.holydesing.software.wallpaperhq.themecolors _themecolors = null;
+public com.holydesing.software.wallpaperhq.viewer _viewer = null;
 public com.holydesing.software.wallpaperhq.b4xpages _b4xpages = null;
 public com.holydesing.software.wallpaperhq.b4xcollections _b4xcollections = null;
 public com.holydesing.software.wallpaperhq.httputils2service _httputils2service = null;
@@ -543,7 +543,7 @@ if (true) return _view_type_webview;
  break; }
 default: {
  //BA.debugLineNum = 180;BA.debugLine="Log(\"Unexpected media type: \" & MediaType)";
-__c.LogImpl("930933010","Unexpected media type: "+BA.NumberToString(_mediatype),0);
+__c.LogImpl("933357842","Unexpected media type: "+BA.NumberToString(_mediatype),0);
  //BA.debugLineNum = 181;BA.debugLine="Return VIEW_TYPE_NONE";
 if (true) return _view_type_none;
  break; }
@@ -558,13 +558,13 @@ public int  _mimetomediatype(String _mime) throws Exception{
 if (_mime.startsWith("image/gif")) { 
  //BA.debugLineNum = 145;BA.debugLine="If GIF_SUPPORTED = False Then Log(\"*** Add a ref";
 if (_gif_supported==__c.False) { 
-__c.LogImpl("930867458","*** Add a reference to B4XGIfView and add SMM_GIF to the build configuration ***",0);};
+__c.LogImpl("933292290","*** Add a reference to B4XGIfView and add SMM_GIF to the build configuration ***",0);};
  //BA.debugLineNum = 146;BA.debugLine="Return IIf(GIF_SUPPORTED, MEDIA_TYPE_GIF, MEDIA_";
 if (true) return (int)(BA.ObjectToNumber(((_gif_supported) ? ((Object)(_media_type_gif)) : ((Object)(_media_type_none)))));
  }else if(_mime.startsWith("image/webp")) { 
  //BA.debugLineNum = 148;BA.debugLine="If WEBP_SUPPORTED = False Then Log(\"*** Add a re";
 if (_webp_supported==__c.False) { 
-__c.LogImpl("930867461","*** Add a reference to WebP library and add SMM_WEBP to the build configuration ***",0);};
+__c.LogImpl("933292293","*** Add a reference to WebP library and add SMM_WEBP to the build configuration ***",0);};
  //BA.debugLineNum = 149;BA.debugLine="Return IIf(WEBP_SUPPORTED, MEDIA_TYPE_WEBP, MEDI";
 if (true) return (int)(BA.ObjectToNumber(((_webp_supported) ? ((Object)(_media_type_webp)) : ((Object)(_media_type_none)))));
  }else if(_mime.startsWith("image/")) { 
@@ -573,7 +573,7 @@ if (true) return _media_type_image;
  }else if(_mime.startsWith("video/")) { 
  //BA.debugLineNum = 153;BA.debugLine="If VIDEO_SUPPORTED = False Then Log(\"*** Add a r";
 if (_video_supported==__c.False) { 
-__c.LogImpl("930867466","*** Add a reference to the video library and add SMM_VIDEO to the build configuration ***",0);};
+__c.LogImpl("933292298","*** Add a reference to the video library and add SMM_VIDEO to the build configuration ***",0);};
  //BA.debugLineNum = 154;BA.debugLine="Return IIf(VIDEO_SUPPORTED, MEDIA_TYPE_VIDEO, ME";
 if (true) return (int)(BA.ObjectToNumber(((_video_supported) ? ((Object)(_media_type_video)) : ((Object)(_media_type_none)))));
  }else if(_mime.startsWith("text/")) { 

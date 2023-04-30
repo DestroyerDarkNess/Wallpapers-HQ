@@ -26,10 +26,10 @@ public class requestsmanager extends B4AClass.ImplB4AClass implements BA.SubDele
  public anywheresoftware.b4a.keywords.Common __c = null;
 public b4a.example.dateutils _dateutils = null;
 public com.holydesing.software.wallpaperhq.main _main = null;
-public com.holydesing.software.wallpaperhq.activity2 _activity2 = null;
 public com.holydesing.software.wallpaperhq.starter _starter = null;
-public com.holydesing.software.wallpaperhq.viewer _viewer = null;
+public com.holydesing.software.wallpaperhq.activity2 _activity2 = null;
 public com.holydesing.software.wallpaperhq.themecolors _themecolors = null;
+public com.holydesing.software.wallpaperhq.viewer _viewer = null;
 public com.holydesing.software.wallpaperhq.b4xpages _b4xpages = null;
 public com.holydesing.software.wallpaperhq.b4xcollections _b4xcollections = null;
 public com.holydesing.software.wallpaperhq.httputils2service _httputils2service = null;
@@ -37,7 +37,7 @@ public com.holydesing.software.wallpaperhq.xuiviewsutils _xuiviewsutils = null;
 public String  _cancelrequest(String _url,com.holydesing.software.wallpaperhq.httpjob _job) throws Exception{
  //BA.debugLineNum = 9;BA.debugLine="Public Sub CancelRequest (URL As String, Job As Ht";
  //BA.debugLineNum = 43;BA.debugLine="Log(\"Add HU2_PUBLIC is missing from the build con";
-__c.LogImpl("931457314","Add HU2_PUBLIC is missing from the build configuration. Can't cancel request.",0);
+__c.LogImpl("933882146","Add HU2_PUBLIC is missing from the build configuration. Can't cancel request.",0);
  //BA.debugLineNum = 46;BA.debugLine="End Sub";
 return "";
 }

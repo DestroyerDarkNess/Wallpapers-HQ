@@ -16,7 +16,7 @@ Sub Class_Globals
 	Private Root As B4XView
 	Private xui As XUI
 	
-	Private AS_TabMenuAdvanced1 As AS_TabMenuAdvanced
+	Public AS_TabMenuAdvanced1 As AS_TabMenuAdvanced
 '	
 			#If B4I
 	Private xpnl_bottom As B4XView
@@ -32,20 +32,23 @@ Sub Class_Globals
 	Dim PopupMenuHeight As Float = 250dip
 	
 	Private MediaManager As SimpleMediaManager
-	Private ASViewPager1 As ASViewPager
+	Public ASViewPager1 As ASViewPager
 	
 	Private B4XComboBox1 As B4XComboBox
-	Private B4XFloatTextField1 As B4XFloatTextField
+	Public B4XFloatTextField1 As B4XFloatTextField
 	
 	Private Online_View As ScrollView
 	
 	
 	Private B4XLoadingIndicator1 As B4XLoadingIndicator
-	Private PageSelector As B4XFloatTextField
+	Public PageSelector As B4XFloatTextField
 	
 	Public ImageViewer As ImageViewerB4X
 	
 	Private SavedScroll_View As ScrollView
+	
+	Dim sm As SlideMenu
+	Private IME1 As IME
 	
 End Sub
 
@@ -60,6 +63,7 @@ Private Sub B4XPage_Created (Root1 As B4XView)
 	
 	B4XPages.SetTitle(Me,"WallpapersHQ")
 	
+	IME1.Initialize("IME1")
 	
 	WallHaveAPI.Initialize
 	MediaManager.Initialize
@@ -90,8 +94,8 @@ Sub DisableStrictMode
 			Dim policy As JavaObject
 			policy = policy.InitializeNewInstance("android.os.StrictMode.ThreadPolicy.Builder", Null)
 			policy = policy.RunMethodJO("permitAll", Null).RunMethodJO("build", Null)
-			Dim sm As JavaObject
-			sm.InitializeStatic("android.os.StrictMode").RunMethod("setThreadPolicy", Array(policy))
+			Dim smeX As JavaObject
+			smeX.InitializeStatic("android.os.StrictMode").RunMethod("setThreadPolicy", Array(policy))
 		End If
 	Catch
 		Log(LastException)
@@ -116,6 +120,8 @@ Private Sub CreateUI
 	Home_View.Color = xui.Color_ARGB(255,20, 21, 23)
     ASViewPager1.AddPage(Home_View,"")
 	
+	'PanelSlideContainer.SetLayoutAnimated(0,0,0,200%x,PanelSlideContainer.Height)
+	'PanelSlideContainer.LoadLayout("LeftSlide") 
 	
 	Dim Saved_View As Panel : Saved_View.Initialize("") : Saved_View.SetLayoutAnimated(0,0,0,ASViewPager1.Base.Width,ASViewPager1.Base.Height)
 	Saved_View.LoadLayout("Saved")
@@ -179,8 +185,27 @@ Private Sub CreateUI
 	
 	
 	ThemeColors.setTheme("Dracula")
+
+	sm.Initialize(Root, Me, "SlideMenu", 42dip, 180dip)
+
+	sm.AddItem("Nature", Null, "id:37")
+	sm.AddItem("4K", Null, "id:65348")
+	sm.AddItem("Landscape", Null, "id:711")
+	sm.AddItem("Artwork", Null, "id:323")
+	sm.AddItem("Hoshino Ai", Null, "id:143075")
+	sm.AddItem("Fantasy art", Null, "id:853")
+	sm.AddItem("Cyberpunk", Null, "id:136548")
+	sm.AddItem("Cars", Null, "id:314")
+	sm.AddItem("Space", Null, "id:32")
+	sm.AddItem("Pixel Art", Null, "id:2321")
+	sm.AddItem("Abstract", Null, "id:74")
+	sm.AddItem("Schoolgirl", Null, "id:3834")
+	sm.AddItem("Arknights", Null, "id:85254")
+	sm.AddItem("Anime BoysChad", Null, "id:175")
 	
 	Sleep(3000)
+	
+	'B4XFloatTextField1.Text = "id:65348"
 	
 	Search
 	
@@ -194,15 +219,20 @@ Private Sub B4XComboBox1_SelectedIndexChanged (Index As Int)
 End Sub
 
 Private Sub B4XFloatTextField1_EnterPressed
+	PageSelector.Text = 1
+	PageSelector.Update
 	Search
 End Sub
 
 Private Sub Button1_Click
+	PageSelector.Text = 1
+	PageSelector.Update
 	Search
 End Sub
 
 Sub Search
 	Try
+		IME1.HideKeyboard
 		If IsListing = False Then
 			IsListing = True
 		
@@ -243,7 +273,25 @@ Sub Search
 				If PageSelector.Text > 1 Then Url = WallHaveAPI.MakePageUrl(Url, PageSelector.Text)
 				
 			Else
-			Url = WallHaveAPI.MakeSearch(B4XFloatTextField1.Text, PageSelector.Text)
+				'Log("Opening")
+				'If B4XFloatTextField1.Text.StartsWith("like:") Then
+				'	Url = "https://wallhaven.cc/search?q=" & B4XFloatTextField1.Text.Replace(":", "%3A")
+				'	Log(Url)
+				'Else
+				'''''End If
+			
+				If B4XFloatTextField1.Text.StartsWith("set:") Then
+						
+					Url = "https://wallhaven.cc/w/" & B4XFloatTextField1.Text.Replace("set:", "")
+					LoadImageEx(Url)
+					IsListing = False
+					B4XLoadingIndicator1.Hide
+					Return
+					
+				Else
+					Url = WallHaveAPI.MakeSearch(B4XFloatTextField1.Text, PageSelector.Text)
+				End If
+			
 			End If
 		
 			TargetUrl = Url
@@ -255,7 +303,12 @@ Sub Search
 	
 			If ImagesFromServer.Size = 0 Then
 			
-				ToastMessageShow("There is no Internet connection!", True)
+				If WallHaveAPI.ErrorConnection = True Then
+					ToastMessageShow("There is no Internet connection!", True)
+					Else
+					ToastMessageShow("No results found!", True)
+				End If
+			
 				Sleep(1000)
 			
 			Else
@@ -269,23 +322,31 @@ Sub Search
 					Dim Size_X As Int = 100%x
 					Dim Size_Y As Int = 50%y
 				
-					Dim bmp As Bitmap
-					bmp.Initialize(File.DirAssets, "Loading.png") 'ruta y nombre del archivo de imagen
+				'	Dim bmp As Bitmap
+				'	bmp.Initialize(File.DirAssets, "Loading.png") 'ruta y nombre del archivo de imagen
 
-					Dim bd As BitmapDrawable
-					bd.Initialize(bmp)
+					'Dim bd As BitmapDrawable
+				'	bd.Initialize(bmp)
 			
 		
 		
 					Dim ImageViewEx As Panel
 					ImageViewEx.Initialize("img")
-					ImageViewEx.Background = bd
+					'ImageViewEx.Background = bd
 					ImageViewEx.Width = Size_X
 					ImageViewEx.Height = Size_Y
 					ImageViewEx.Color = Colors.ARGB(255,40, 42, 54)
 				
 					MediaManager.SetMediaWithExtra(ImageViewEx, ImageServerData.MinimizedURL, "", CreateMap(MediaManager.REQUEST_RESIZE_MODE : "FILL_NO_DISTORTIONS"))
 				
+			
+				'	Wait For (ImageViewEx) EventName_MediaReady (Success As Boolean, Media As SMMedia)
+					
+			
+			'		Dim BackGroundEx As BitmapDrawable = ImageViewEx.Background
+    	    '       Dim bmpTest As B4XBitmap = BackGroundEx.Bitmap 
+			'		ImageViewEx.SetBackgroundImage(Blur(bmpTest))
+					
 					ImageViewEx.Tag = I
 			
 					ControlListerEx.Add(Online_View, ImageViewEx, True)
@@ -318,25 +379,33 @@ Sub img_Click
 		Dim iv As Panel
 		iv = Sender
 		Dim ImageSelected As ImageServer = WallHaveAPI.ImageURLs.Get(iv.Tag)
-		Dim Image4K As String = WallHaveAPI.GetImage4K(ImageSelected.PreviewURL)
-	
-		If Image4K.Length = 0 Then
-			
-			ToastMessageShow("No Internet Error!", False)
-			
-			Else
-
-		B4XPages.ShowPage("ImageViewBETA")
-		B4XPages.GetPage("ImageViewBETA").As(ImageViewerB4X).ShowImage(Image4K)
-		
-		End If
-		
+		LoadImageEx(ImageSelected.PreviewURL)
 	Catch
 		Log(LastException)
 	End Try
 	
 End Sub
 
+
+Sub LoadImageEx(url As String)
+	Try
+		
+		Dim Image4K As String = WallHaveAPI.GetImage4K(url)
+	
+		If Image4K.Length = 0 Then
+			
+			ToastMessageShow("No Internet Error!", False)
+			
+		Else
+
+			B4XPages.ShowPage("ImageViewBETA")
+			B4XPages.GetPage("ImageViewBETA").As(ImageViewerB4X).ShowImage(Image4K)
+		
+		End If
+	Catch
+		Log(LastException)
+	End Try
+End Sub
 
 'You can see the list of page related events in the B4XPagesManager object. The event name is B4XPage.
 
@@ -416,6 +485,10 @@ Public Sub ListSaved
 		For Each FileImg As String In Files
 			'Dim ImgFile As Bitmap = LoadBitmap(Main.DownloadedWallpapers,FileImg )
 			Try
+				
+				Log(FileImg) '"ShareEx" & ".jpg"
+				
+				
 				Dim Size_X As Int = 100%x
 				Dim Size_Y As Int = 50%y
 				
@@ -484,4 +557,75 @@ Sub OpenLink(link As String)
 	Dim intent As Intent
 	intent.Initialize(intent.ACTION_VIEW, link)
 	StartActivity(intent)
+End Sub
+
+Private Sub Blur (bmp As B4XBitmap) As B4XBitmap
+	Dim n As Long = DateTime.Now
+	Dim bc As BitmapCreator
+	Dim ReduceScale As Int = 2
+	bc.Initialize(bmp.Width / ReduceScale / bmp.Scale, bmp.Height / ReduceScale / bmp.Scale)
+	bc.CopyPixelsFromBitmap(bmp)
+	Dim count As Int = 3
+	Dim clrs(3) As ARGBColor
+	Dim temp As ARGBColor
+	Dim m As Int
+	For steps = 1 To count
+		For y = 0 To bc.mHeight - 1
+			For x = 0 To 2
+				bc.GetARGB(x, y, clrs(x))
+			Next
+			SetAvg(bc, 1, y, clrs, temp)
+			m = 0
+			For x = 2 To bc.mWidth - 2
+				bc.GetARGB(x + 1, y, clrs(m))
+				m = (m + 1) Mod clrs.Length
+				SetAvg(bc, x, y, clrs, temp)
+			Next
+		Next
+		For x = 0 To bc.mWidth - 1
+			For y = 0 To 2
+				bc.GetARGB(x, y, clrs(y))
+			Next
+			SetAvg(bc, x, 1, clrs, temp)
+			m = 0
+			For y = 2 To bc.mHeight - 2
+				bc.GetARGB(x, y + 1, clrs(m))
+				m = (m + 1) Mod clrs.Length
+				SetAvg(bc, x, y, clrs, temp)
+			Next
+		Next
+	Next
+	Log(DateTime.Now - n)
+	Return bc.Bitmap
+End Sub
+
+Private Sub SetAvg(bc As BitmapCreator, x As Int, y As Int, clrs() As ARGBColor, temp As ARGBColor)
+	temp.Initialize
+	For Each c As ARGBColor In clrs
+		temp.r = temp.r + c.r
+		temp.g = temp.g + c.g
+		temp.b = temp.b + c.b
+	Next
+	temp.a = 255
+	temp.r = temp.r / clrs.Length
+	temp.g = temp.g / clrs.Length
+	temp.b = temp.b / clrs.Length
+	bc.SetARGB(x, y, temp)
+End Sub
+
+Private Sub SlideOpenButton_Click
+sm.Show
+End Sub
+
+'Event sub which is called when an item in the slidemenu is clicked
+Sub SlideMenu_Click(Item As Object)
+	'ToastMessageShow("Item clicked: " & Item, False)
+	
+	
+	B4XPages.MainPage.B4XFloatTextField1.Text =  Item
+	B4XPages.MainPage.B4XFloatTextField1.Update
+	B4XPages.MainPage.PageSelector.Text = "1"
+	B4XPages.MainPage.PageSelector.Update
+	B4XPages.MainPage.Search
+	
 End Sub

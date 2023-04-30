@@ -62,10 +62,10 @@ public int _b4asdkversion = 0;
 public int _defaultrequesttimeout = 0;
 public b4a.example.dateutils _dateutils = null;
 public com.holydesing.software.wallpaperhq.main _main = null;
-public com.holydesing.software.wallpaperhq.activity2 _activity2 = null;
 public com.holydesing.software.wallpaperhq.starter _starter = null;
-public com.holydesing.software.wallpaperhq.viewer _viewer = null;
+public com.holydesing.software.wallpaperhq.activity2 _activity2 = null;
 public com.holydesing.software.wallpaperhq.themecolors _themecolors = null;
+public com.holydesing.software.wallpaperhq.viewer _viewer = null;
 public com.holydesing.software.wallpaperhq.b4xpages _b4xpages = null;
 public com.holydesing.software.wallpaperhq.b4xcollections _b4xcollections = null;
 public com.holydesing.software.wallpaperhq.httputils2service _httputils2service = null;
@@ -448,7 +448,7 @@ _t1.Callback /*Object*/  = __c.Null;
  //BA.debugLineNum = 563;BA.debugLine="If t1.NumberOfAncestors = 0 Then";
 if (_t1.NumberOfAncestors /*int*/ ==0) { 
  //BA.debugLineNum = 564;BA.debugLine="Log(\"Target is not in the views tree!\")";
-__c.LogImpl("930277642","Target is not in the views tree!",0);
+__c.LogImpl("932702474","Target is not in the views tree!",0);
  };
  //BA.debugLineNum = 566;BA.debugLine="Return t1";
 if (true) return _t1;
@@ -861,7 +861,7 @@ _viewsmanager._addmedia /*void*/ (_req,_media,_getrequestfromrequestset(_req));
 _viewsmanager._addmedia /*void*/ (_req,(com.holydesing.software.wallpaperhq.simplemediamanager._smmedia)(_mediacache._get /*Object*/ ((Object)(_req.Error /*com.holydesing.software.wallpaperhq.simplemediamanager._smmediarequest*/ .Key /*String*/ ))),_getrequestfromrequestset(_req));
  }else {
  //BA.debugLineNum = 364;BA.debugLine="Log(\"MediaIsReady Unexpected state!\")";
-__c.LogImpl("929163530","MediaIsReady Unexpected state!",0);
+__c.LogImpl("931588362","MediaIsReady Unexpected state!",0);
  };
  }
 };
@@ -938,7 +938,7 @@ _mediaisready(_media);
  break; }
 case 5: {
  //BA.debugLineNum = 233;BA.debugLine="Log(\"Unexpected mime: \" & Media.Meta.Mime)";
-__c.LogImpl("928901407","Unexpected mime: "+_media.Meta /*com.holydesing.software.wallpaperhq.simplemediamanager._smmediameta*/ .Mime /*String*/ ,0);
+__c.LogImpl("931326239","Unexpected mime: "+_media.Meta /*com.holydesing.software.wallpaperhq.simplemediamanager._smmediameta*/ .Mime /*String*/ ,0);
  //BA.debugLineNum = 234;BA.debugLine="Media.MediaState = STATE_ERROR";
 _media.MediaState /*int*/  = _state_error;
  //BA.debugLineNum = 235;BA.debugLine="MediaIsReady(Media)";
@@ -1174,7 +1174,7 @@ int _orientation = 0;
  //BA.debugLineNum = 588;BA.debugLine="If Media.Meta.Mime <> \"image/jpeg\" Then";
 if ((_media.Meta /*com.holydesing.software.wallpaperhq.simplemediamanager._smmediameta*/ .Mime /*String*/ ).equals("image/jpeg") == false) { 
  //BA.debugLineNum = 589;BA.debugLine="Log(\"image/jpeg mime expected!\")";
-__c.LogImpl("930408709","image/jpeg mime expected!",0);
+__c.LogImpl("932833541","image/jpeg mime expected!",0);
  //BA.debugLineNum = 590;BA.debugLine="In.Close";
 _in.Close();
  //BA.debugLineNum = 591;BA.debugLine="Return";
@@ -1267,7 +1267,7 @@ case 8:
 //C
 this.state = 9;
  //BA.debugLineNum = 159;BA.debugLine="Log(\"Unexpected state:  media.MediaState = STAT";
-parent.__c.LogImpl("928835854","Unexpected state:  media.MediaState = STATE_ERROR",0);
+parent.__c.LogImpl("931260686","Unexpected state:  media.MediaState = STATE_ERROR",0);
  if (true) break;
 
 case 9:
@@ -1480,7 +1480,7 @@ _extra.Put((Object)(_request_file),(((_dir).equals("")) ? ((Object)("")) : ((Obj
  //BA.debugLineNum = 131;BA.debugLine="If ViewsManager.MimeToMediaType(Mime) = ViewsMana";
 if (_viewsmanager._mimetomediatype /*int*/ (_mime)==_viewsmanager._media_type_none /*int*/ ) { 
  //BA.debugLineNum = 132;BA.debugLine="Log(\"Invalid mime!\")";
-__c.LogImpl("928704776","Invalid mime!",0);
+__c.LogImpl("931129608","Invalid mime!",0);
  //BA.debugLineNum = 133;BA.debugLine="Return";
 if (true) return "";
  };

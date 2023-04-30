@@ -17,7 +17,7 @@ Sub Class_Globals
 	Public Hot As String = HomeUrl & "hot"
 	Public Toplist As String = HomeUrl & "toplist"
 	Public Random As String = HomeUrl & "random"
-	
+	Public ErrorConnection As Boolean = False
 	Public  ImageURLs As List
 End Sub
 
@@ -33,7 +33,20 @@ Public Sub OpenImageView
 End Sub
 
 Public Sub MakeSearch( Text As String, Page As Int ) As String
-	Return HomeUrl & "search?q=" & Text.Replace(" ", "+") & "&page=" & Page
+	If Text.StartsWith("id") Then
+		'https://wallhaven.cc/search?q=id%3A175&sorting=random&ref=fp&seed=cJ9QmU&page=1
+		Return HomeUrl & "search?q=" & Text & "&sorting=random&ref=fp" & "&page=" & Page
+	
+		Else
+			
+		If Text.StartsWith("tag") Then
+			'https://wallhaven.cc/tag/96280&page=2
+			Return HomeUrl & "tag/" & Text.Replace("tag:", "") & "&page=" & Page
+			Else
+			Return HomeUrl & "search?q=" & Text.Replace(" ", "+") & "&page=" & Page
+		End If
+			
+	End If
 End Sub
 
 Public Sub MakePageUrl(BaseUrl As String,   Page As Int) As String
@@ -57,17 +70,20 @@ End Sub
 Public Sub GetImages(URL) As  List
 	
 	ImageURLs.Clear
-	
+	ErrorConnection = False
 	Try
+		'Log(URL)
 		Dim Html_Main_Source As String =  js.connect(URL)
 		If  Html_Main_Source.Length > 0 Then
 			Dim ElementList As List =  js.getElementsByTag(Html_Main_Source, "li")
-		
+			'Log(Html_Main_Source)
+			'Log("Li Count: " & ElementList.Size)
 			For Each PreElement As String In  ElementList
 				Try
-					
+				'	Log(PreElement)
 					Dim PreviewUrlList As List = js.getElementsByTag(PreElement,"a")
 					Dim Minimized As List = js.getElementsByTag(PreElement,"img")
+					
 					
 					
 					If Not (PreviewUrlList.size = 0) Then
@@ -99,6 +115,7 @@ Public Sub GetImages(URL) As  List
 		
 		Else
 			Log("Error In Request!")
+			ErrorConnection = True
 		End If
 	Catch
 		Log(LastException)

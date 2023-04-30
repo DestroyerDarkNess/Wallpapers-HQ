@@ -9,6 +9,7 @@ Sub Class_Globals
 	Private xui As XUI 'ignore
 	
 	Public ImageData As String
+	Public WallpaperID As String
 	
 	Private ScaleImageView1 As ScaleImageView
 	Private Panel1 As Panel
@@ -37,6 +38,18 @@ Dim viewx As Int
 	Private Button3 As Button
 	Private Button2 As Button
 	Private Button4 As Button
+	
+	
+	
+	
+	Dim const popupItemSetHome As String = Chr(0xF015) & " Home screen"
+	Dim const popupItemSetLock As String = Chr(0xF023) & " Lock screen"
+	Dim const popupItemSetBoth As String = Chr(0xF10B) & " Both"
+	Dim const popupItemMoreLike As String = Chr(0xF004) & " More like this"
+	Dim const popupItemShare As String = Chr(0xF1E1) & " Share"
+	
+	Dim popExample As myPopup
+	Public Provider As FileProvider
 End Sub
 
 'You can add more parameters here.
@@ -55,9 +68,9 @@ Private Sub B4XPage_Created (Root1 As B4XView)
 '	B4XPages.SetTitle(Me, "ImageViewer")
 	
 	B4XPages.GetManager.ShowUpIndicator = False
-
+	Provider.Initialize
 '	ShowImage(ImageData)
-	
+	popExample.Initialize( Root, Me, "popExample", Array As String( popupItemSetHome, popupItemSetLock, popupItemSetBoth, popupItemMoreLike,popupItemShare), 100%x, 100%y, Typeface.FONTAWESOME )
 End Sub
 
 'You can see the list of page related events in the B4XPagesManager object. The event name is B4XPage.
@@ -65,6 +78,9 @@ End Sub
 
 Sub ShowImage(ImgDat As String)
 	ImageData = ImgDat
+	WallpaperID = GetFileID
+	
+	
 	Button2.Visible = False
 	Button3.Visible = False
 	Button4.Visible = False
@@ -105,6 +121,7 @@ Sub ShowImage(ImgDat As String)
 				Exit
 			End If
 		Loop
+		
 		' restore scale and centre location
 		ScaleImageView1.SetScaleAndCenter(ViewerZoom,ViewerX, ViewerY, 1)
 		
@@ -116,6 +133,7 @@ Sub ShowImage(ImgDat As String)
 		
 		Button2.Visible = True
 		Button3.Visible = True
+		
 		ScaleImageView1.Visible = True
 		
 	Else
@@ -130,6 +148,9 @@ End Sub
 Sub ShowImageFromFile(ImgDat As String)
 	Try
 		ImageData = ImgDat
+		
+		WallpaperID = ImageData.Replace(".jpg", "")
+		
 		Button2.Visible = False
 		Button3.Visible = False
 		Button4.Visible = True
@@ -160,6 +181,7 @@ Sub ShowImageFromFile(ImgDat As String)
 				Exit
 			End If
 		Loop
+		
 		' restore scale and centre location
 		ScaleImageView1.SetScaleAndCenter(ViewerZoom,ViewerX, ViewerY, 1)
 		
@@ -171,6 +193,7 @@ Sub ShowImageFromFile(ImgDat As String)
 		
 		Button2.Visible = True
 		'Button4.Visible = True
+	
 		ScaleImageView1.Visible = True
 		
 		B4XLoadingIndicator1.Hide
@@ -302,12 +325,56 @@ Private Sub Button1_Click
 End Sub
 
 Private Sub Button2_Click
-	Dim FullImage As Bitmap = ScaleImageView1.Image
-	SetWallPaper(FullImage)
+	
+	popExample.Show(Button2)
+	
 End Sub
 
 
-Sub SetWallPaper(Bmp As Bitmap)
+Sub popExample_BtnClick( btnText As String )
+	Dim FullImage As Bitmap = ScaleImageView1.Image
+	Select Case btnText
+		Case popupItemSetHome
+			SetWallPaper(FullImage,1)
+			ToastMessageShow("The wallpaper has been set Successfully.", True)
+		Case popupItemSetLock
+			SetWallPaper(FullImage,2)
+			ToastMessageShow("The wallpaper has been set Successfully.", True)
+		Case popupItemSetBoth
+		'	SetWallPaperOld(FullImage)
+			SetWallPaper(FullImage,1)
+			SetWallPaper(FullImage,2)
+			ToastMessageShow("The wallpaper has been set Successfully.", True)
+		Case popupItemMoreLike
+			B4XPages.ClosePage(Me)
+			B4XPages.MainPage.B4XFloatTextField1.Text = "like:" & WallpaperID
+			B4XPages.MainPage.B4XFloatTextField1.Update
+			B4XPages.MainPage.PageSelector.Text = "1"
+			B4XPages.MainPage.PageSelector.Update
+			B4XPages.MainPage.ASViewPager1.CurrentIndex2 = 0
+			'B4XPages.MainPage.AS_TabMenuAdvanced1.Index = 0
+			B4XPages.MainPage.AS_TabMenuAdvanced1.Refresh
+			B4XPages.MainPage.Search
+		Case popupItemShare
+			' Crea un nuevo objeto Intent
+		'	Dim intent As Intent
+		'	intent.Initialize(intent.ACTION_SEND, "")
+    
+			' Establece el tipo de contenido del texto a compartir
+			'intent.SetType("text/plain")
+    
+			' Establece el texto a compartir
+			'intent.PutExtra("android.intent.extra.TEXT", ImageData) ' Reemplaza "Texto a compartir" con el texto que deseas compartir
+    
+			' Inicia la actividad de compartir
+			''StartActivity(intent)
+			ShareImage
+	End Select
+	
+'	ToastMessageShow(btnText & " selected", False)
+End Sub
+
+Sub SetWallPaperOld(Bmp As Bitmap)
 	Try
 		Dim r As Reflector
 		r.Target = r.RunStaticMethod("android.app.WallpaperManager", "getInstance", _
@@ -321,12 +388,24 @@ Sub SetWallPaper(Bmp As Bitmap)
 	End Try
 End Sub
 
+Sub SetWallPaper(Bmp As Bitmap, TypeWall As Int)
+	Try
+	Dim wallpaper As JavaObject
+		Dim context As JavaObject
+		context.InitializeContext
+		wallpaper = wallpaper.InitializeStatic("android.app.WallpaperManager").RunMethod("getInstance", Array(context))
+		wallpaper.RunMethod("setBitmap", Array(Bmp,Null, True, TypeWall))
+	Catch
+		Dim Exeption As String =LastException
+		Log(Exeption)
+		ToastMessageShow(Exeption, True)
+	End Try
+End Sub
+
 Private Sub Button3_Click
 	Try
 		Button3.visible = False
-		Dim strSplit() As String = Regex.Split("/",ImageData)
-		Dim SvFilenameEx As String = strSplit(strSplit.Length - 1).Replace("wallhaven","")
-		Dim FileName As String = SvFilenameEx.Replace("-","")
+		Dim FileName As String = WallpaperID & ".jpg"
 		
 		If File.Exists(Main.DownloadedWallpapers, FileName) = True Then
 			File.Delete(Main.DownloadedWallpapers, FileName)
@@ -364,6 +443,48 @@ Private Sub Button4_Click
 		End If
 		B4XPages.MainPage.ListSaved
 		B4XPages.ClosePage(Me)
+	Catch
+		Log(LastException)
+		ToastMessageShow(LastException, False)
+	End Try
+End Sub
+
+Private Sub GetFileID As String
+	Try
+		Dim strSplit() As String = Regex.Split("/",ImageData)
+		Dim SvFilenameEx As String = strSplit(strSplit.Length - 1).Replace("wallhaven","")
+		Dim FileName As String = SvFilenameEx.Replace("-","").Replace(".jpg","")
+		
+		Return FileName
+	Catch
+		Log(LastException)
+		Return "Error"
+	End Try
+End Sub
+
+
+Sub ShareImage()
+	Try
+		Dim FileName As String = "ShareEx" & ".jpg"
+		
+		If File.Exists(Provider.SharedFolder, FileName) = True Then
+			File.Delete(Provider.SharedFolder, FileName)
+		End If
+		
+		Dim SavedImage As Bitmap = ScaleImageView1.Image
+		Dim out As OutputStream = File.OpenOutput(Provider.SharedFolder, FileName, False)
+		SavedImage.WriteToStream(out, 100, "JPEG")
+		out.Close
+	
+	
+		'File.Copy(File.DirAssets, FileName, Provider.SharedFolder, FileName)
+		Dim in As Intent
+		in.Initialize(in.ACTION_VIEW, "")
+		Provider.SetFileUriAsIntentData(in, FileName)
+		'Type must be set after calling SetFileUriAsIntentData
+		in.SetType("image/*")
+		StartActivity(in)
+	
 	Catch
 		Log(LastException)
 		ToastMessageShow(LastException, False)
