@@ -24,7 +24,7 @@ More than 1,147,012 high quality wallpapers with different resolutions, includin
 <h2> ⬇️ Downloads</h2> 
 </center>
 
-Find the latest release of StrelyCleaner on the [Play Store](https://play.google.com/store/apps/details?id=com.holydesing.software.wallpaperhq) page.
+Find the latest release of Wallpaper HQ on the [Play Store](https://play.google.com/store/apps/details?id=com.holydesing.software.wallpaperhq) page.
 
 <center>
 <h2>🖼️ Screenshots</h2> 
